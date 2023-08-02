@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Посты пользователей | Test blog{% endblock %}
+
+{% block content %}
+  <center>
+    <h2>Посты пользователей</h2>
+  </center>
+
+  <hr>
+  <br>
+  <br>
+  <div class="container">
+    {% for post in posts %}
+      <br>
+      <div class= "row">
+        <h3>{{post.title}}</h3>
+        <h5>Автор: {{post.user.name}}</h5>
+        <p>{{post.body}}</p>
+        {% if user == post.user %}
+          <button type="button" class="btn btn-danger btn-sm">Удалить пост</button>
+        {% endif %}
+      </div>
+      <hr/>
+    {% endfor %}
+  </div>
+{% endblock %}
