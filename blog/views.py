@@ -1,4 +1,4 @@
-from rest_framework import viewsets, views
+from rest_framework import viewsets
 from rest_framework import permissions
 
 from blog.models import User, Post
@@ -12,16 +12,23 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer
-
+        
 
 class PostViewSet(viewsets.ModelViewSet):
     """
     API endpoint user's posts.
     """
-    queryset = Post.objects.all()
+
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly,
                           IsUserOrReadOnly]
     
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+    def get_queryset(self):
+
+        if self.request.user.is_authenticated:
+           return self.request.user.posts.all()            
+        else:
+           return {}          
