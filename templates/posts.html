@@ -4,7 +4,11 @@
 
 {% block content %}
   <center>
-    <h2>Посты пользователей</h2>
+    {% if username %}
+      <h2>Посты пользователя {{username}}</h2>
+    {% else %}
+      <h2>Посты всех пользователей</h2>
+    {% endif %}
   </center>
 
   <hr>
@@ -18,7 +22,9 @@
         <h5>Автор: {{post.user.name}}</h5>
         <p>{{post.body}}</p>
         {% if user == post.user %}
-          <button type="button" class="btn btn-danger btn-sm">Удалить пост</button>
+          <a href="{% url 'delete_post' post.id %}">
+            <button type="button" class="btn btn-danger btn-sm">Удалить пост</button>
+          </a>
         {% endif %}
       </div>
       <hr/>

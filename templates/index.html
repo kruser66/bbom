@@ -21,7 +21,7 @@
     {% for u in users %}
       <tr>
         <td>{{u.id}}</td>
-        <td><a href="{% url 'index' %}">{{u.name}}</a></td>
+        <td><a href="{% url 'user_posts' u.id %}">{{u.name}}</a></td>
         <td>{{u.email}}</td>
       </tr>
     {% endfor %}

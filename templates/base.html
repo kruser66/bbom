@@ -49,7 +49,7 @@
         <ul class="nav navbar-nav navbar-right">
           {% if user.is_authenticated %}
           <li>
-            <a href="#">+ Создать пост</a>
+            <a href="{% url 'add_post' %}">+ Создать пост</a>
           </li>
           <span class="navbar-text">
             {{user.name}}

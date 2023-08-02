@@ -55,3 +55,21 @@ class Login(forms.Form):
             'placeholder': 'Введите пароль'
         })
     )
+
+
+class Post(forms.Form):
+    title = forms.CharField(
+        label='Название поста', max_length=150, required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Введите заголовок статьи'
+        })
+    )
+    body = forms.CharField(
+        label='Тело поста', required=True,
+        widget=forms.Textarea(attrs={
+            'class': 'form-control',
+            'placeholder': 'Набирайте текст статьи'
+        })
+    )
+    

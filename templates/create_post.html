@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block header_nav %}{% endblock %}
+
+{% block title %}Новый пост | Test blog{% endblock %}
+
+
+{% block content %}
+  <div class="container text-center">
+    <h2 style="margin-top: 60px;">Создать пост</h2>
+
+    <hr/>
+
+    <div class="row">
+      <div class="col-sm-offset-4 col-sm-4">
+        <form method="post">
+          {% csrf_token %}
+
+          {{ form.non_field_errors }}
+
+          <input type="hidden" name="next" value="{{ request.GET.next }}"/>
+
+          {{form.as_p}}
+          <button class="btn btn-primary" type="submit">Сохранить</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}
