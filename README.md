@@ -57,9 +57,9 @@ API (ипользуется стандартный интефейс DRF):
 
 * Получить всех пользователей `GET /api/users`
 * Получить посты пользователя `GET /api/posts`
-* Просмотр поста `GET /api/posts/<id>`
-* Изменить пост `PUT /api/posts/<id>`
-* Удалить пост `DELETE /api/posts/<id>`
+* Просмотр поста `GET /api/posts/:id`
+* Изменить пост `PUT /api/posts/:id`
+* Удалить пост `DELETE /api/posts/:id`
 
 Пользователи создаются в Django admin
 
