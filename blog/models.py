@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from blog.managers import CustomUserManager
 
+
 class User(AbstractUser):
     username = None
     id = models.UUIDField(
@@ -20,19 +21,19 @@ class User(AbstractUser):
     )
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-    
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
-    
+
     objects = CustomUserManager()
-    
+
     class Meta:
         verbose_name = 'пользователь'
         verbose_name_plural = 'пользователи'
 
     def __str__(self):
         return self.email
-    
+
 
 class Post(models.Model):
     id = models.UUIDField(
@@ -52,8 +53,7 @@ class Post(models.Model):
     body = models.TextField(
         'Тело поста'
     )
-    
-    
+
     class Meta:
         verbose_name = 'пост'
         verbose_name_plural = 'посты'
